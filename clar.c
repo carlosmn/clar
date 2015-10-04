@@ -141,6 +141,7 @@ static struct {
 struct clar_func {
 	const char *name;
 	void (*ptr)(void);
+	int is_bench;
 };
 
 struct clar_suite {
@@ -280,6 +281,9 @@ clar_run_suite(const struct clar_suite *suite, const char *filter)
 
 	for (i = 0; i < suite->test_count; ++i) {
 		if (filter && strncmp(test[i].name, filter, matchlen))
+			continue;
+
+		if (test[i].is_bench)
 			continue;
 
 		_clar.active_test = test[i].name;

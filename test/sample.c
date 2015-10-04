@@ -82,3 +82,11 @@ void test_sample__ptr(void)
 	cl_assert_equal_p(actual, actual); /* pointers to same object */
 	cl_assert_equal_p(&actual, actual);
 }
+
+void bench_sample__loop(void)
+{
+	int i;
+
+	for (i = 0; i < 100000; i++) {
+	}
+}
